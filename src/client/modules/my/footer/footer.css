@@ -1,0 +1,23 @@
+.footerWrapper{
+    width: 100%;
+    height: 35px;
+    display: flex;
+    position: absolute;
+    color: lightskyblue;
+    justify-content: center;
+    background: linear-gradient(5deg, #5252ca, #2b4e72)
+    /*background: linear-gradient(5deg, #5252ca, #b84848);*/
+}
+.footerTxt{
+    font-size: 13px;
+}
+.emailWrapper{
+    display: flex;
+    margin: 10px 0 0 0;
+    font-style: italic;
+    padding-right: 10px;
+}
+.fotterMailImg{
+    height: 19px;
+    padding-right: 5px;
+}

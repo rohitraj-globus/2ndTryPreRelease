@@ -1,0 +1,155 @@
+<template>
+    <div class="slds-card slds-p-around_x-small">
+        <div class="content">
+            <div class="firstPage">
+                <div class="slds-grid slds-wrap slds-p-around_small layout">
+
+                    <!-- Gallery Section -->
+                    <div class="gallery hide animate">
+                        <div class="slideshow-container">
+                            <template for:each={bannerImages} for:item="bannerImage">
+                                <div class="mySlides fade" key={bannerImage.id}>
+                                    <img class="bannerImg animate" src={bannerImage.picture} style="width:100%;">
+                               </div>
+                            </template>
+                           <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
+                        </div>
+
+                    
+                        <!--<div class="dotContainer">
+                            <div style="text-align:center;width: 97vw;margin: 0 auto;">
+                                <span class="dot" onclick="currentSlide(1)"></span> 
+                                <span class="dot" onclick="currentSlide(2)"></span> 
+                                <span class="dot" onclick="currentSlide(3)"></span> 
+                                <span class="dot" onclick="currentSlide(4)"></span> 
+                                <span class="dot" onclick="currentSlide(5)"></span> 
+                                <span class="dot" onclick="currentSlide(6)"></span> 
+                                <span class="dot" onclick="currentSlide(7)"></span> 
+                                <span class="dot" onclick="currentSlide(8)"></span> 
+                                <span class="dot" onclick="currentSlide(9)"></span> 
+                            </div>
+                        </div> -->         
+                    </div>
+
+
+
+                    <div class="slds-col selesctCategory slds-size_12-of-12"> Select Your Category</div>
+                    <div class="slds-p-around_small slds-col categorySec" data-id="category 2 (cooler)" onclick={categoryClicked}>
+                        <div class="innrCatSec">
+                            <img src="https://drive.google.com/uc?export=view&id=1LwlBIA2C9szfUEtC-4yx4VqjFCgh646b"
+                                class="categoryImg slds-align_absolute-center " 
+                                alt="Cooler">
+                            <p class="categoryText">Cooler</p>
+                            <p class="categorySubText">A large Indian cupboard or cabinet</p>
+                        </div>
+                    </div>
+                    <div class="slds-p-around_small slds-col categorySec"  data-id="category 1 (almirah)" onclick={categoryClicked}>
+                        <div class="innrCatSec">
+                            <img src="https://drive.google.com/uc?export=view&id=1IKpp3IYn_JGyzJp2I9fMys1ZhjhSJYSl"
+                                class="categoryImg slds-align_absolute-center " 
+                                alt="Almirah">
+                            <p class="categoryText">Almirah</p>
+                            <p class="categorySubText">A large Indian cupboard or cabinet</p>
+                        </div>
+                    </div>
+                    <div class="slds-p-around_small slds-col categorySec" data-id="category 3 (ac)" onclick={categoryClicked}>
+                        <div class="innrCatSec">
+                            <img src="https://drive.google.com/uc?export=view&id=1oN8hgmzyO_pHEDNrm5Q7ywQN8YZHztXB"
+                                class="categoryImg slds-align_absolute-center " 
+                                alt="wooden">
+                            <p class="categoryText">Wooden's</p>
+                            <p class="categorySubText">A large Indian cupboard or cabinet</p>
+                        </div>
+                    </div>
+                    <div class="slds-p-around_small slds-col categorySec" data-id="category 4 (chair)" onclick={categoryClicked}>
+                        <div class="innrCatSec">
+                            <img src="https://drive.google.com/uc?export=view&id=1PwA7bmcH1hg1h7MpHPwQATnYNGNMYNVX"
+                                class="categoryImg slds-align_absolute-center " 
+                                alt="plastic">
+                            <p class="categoryText">Plastic's</p>
+                            <p class="categorySubText">A large Indian cupboard or cabinet</p>
+                        </div>
+                    </div>
+
+                </div>
+                <!--<div class="searchbar">
+                    Search by Name
+                    <input
+                        class="slds-input"
+                        type="search"
+                        onchange={handleSearchKeyChange}
+                    />
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <template for:each={products} for:item="product">
+                        <div
+                            class="slds-col"
+                            padding="around-small"
+                            key={product.id}
+                        >
+                            <my-product-item-tile
+                                product={product}
+                                onqtyupdate={handleQuantityChange}
+                            ></my-product-item-tile>
+                        </div>
+                    </template>
+                </div>
+                <div class="center" style="margin-top: 15px;">
+                    Enter your email address:&nbsp;
+                    <input
+                        type="text"
+                        class="slds-input emailaddress"
+                        style="width: 50%"
+                    />
+                </div>
+
+                <div class="center" style="margin-top: 15px;">
+                    <button
+                        class="slds-button slds-button_brand"
+                        label="Submit Order"
+                        title="Submit Order"
+                        onclick={handleClick}
+                    >
+                        Submit Order
+                    </button>
+                </div> -->
+            </div>
+            <div class="secondPage hide">
+                <div class="innerWrapper slds-grid slds-wrap">
+                    <template for:each={listOfProducts} for:item="product">
+                        <div class="productTile" data-id={product.sfid} key={product.id} onclick={productClicked}>
+                            <h1 class="productTileTxt">{product.name}</h1>
+                            <div class="productTileImg">
+                                <!--<img src="https://drive.google.com/uc?export=view&id=1LwlBIA2C9szfUEtC-4yx4VqjFCgh646b"/>-->
+                                <img src={product.picture}/>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="thirdPage hide">
+                <template if:true={clickedProduct}>
+                    <div class="innerProductWrapper">
+                        <h1 class="ptitle">{clickedProduct.name}</h1>
+                        <div class="productTileImg">
+                            <img src={mainImageUrl}/>
+                            <div class="difrntImg">
+                                <img src={clickedProduct.picture} data-id={clickedProduct.picture} onclick={changeImg}/>
+                                <img src={clickedProduct.picture2} data-id={clickedProduct.picture2} onclick={changeImg}/>
+                                <img src={clickedProduct.picture3} data-id={clickedProduct.picture3} onclick={changeImg}/>
+                            </div>
+                        </div>
+                        <p class="pMrp">MRP : <span> {clickedProduct.price}  (Discount Available)</span> </p>
+                        <h1 class="pFtrsHd">Feature &amp; details </h1>
+                        <p class="pFtrDtl"> ➼ Brand : AMZ <br/> ➼ Color : Chocolate Brown <br/> ➼ Material : Cotton with Finest Microfiber Filling <br/> ➼ Size : 48 * 16 Inches <br/> ➼ Product Type : Chair Pad / Cushion </p>
+                        <h1 class="pDescHd">Description </h1>
+                        <p class="pDescDtl">About This Chair Pad is design in such a way that You can use it as a cushion for your kitchen/bar stool; office chair; wheelchair; car; sofa; or any other chair. You can also keep this chair cushion vertically on your chair and use it as a back rest Maintained just like a pillow; you can drape it in your favorite cushion covers to add an additional charm to your cozy living space This chair pad is made of Cotton. The dimension of the product is 48 x 16 Inches. It ensures better durability and performance.These beautiful Chair pad gives both comfort and easy care.A very well-made soft sponge and comfort seat pad.A simple yet fashionable style looks beautiful as well as functional. Best gift for your friend or your family. A travel seat cushions; to improve blood circulation; alleviate the pressure of body and sleep. Comfort; breathable and dry. You can fully enjoy the of sleeping while using this health; fashion; high-grade seat cushions for a long term when out to travel; take a bus or in office.</p>
+                        <p class="pOrder">To Order : Call/Whataap - 89898988989</p>
+                        <marquee behavior="scroll" scrolldelay="20" direction="left" width="100%" bgcolor="white">To Order : Call/Whataap - 89898988989</marquee>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>
